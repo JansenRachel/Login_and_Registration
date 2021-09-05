@@ -11,7 +11,15 @@
 <body>
     <div id="wrapper">
         <h1>Registration</h1>
-        <form action="" method="POST">
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form action="/new_user" method="POST">
             {% csrf_token %}
             <label for="first name">First Name</label>
             <input type="text" name="firstname">
@@ -20,24 +28,25 @@
             <input type="text" name="lastname">
 
             <label for="email">Email</label>
-            <input type="text" name="email">
+            <input type="email" name="email">
 
             <label for="password">Password</label>
-            <input type="text" name="password">
+            <input type="password" name="password">
 
             <label for="confirmPw">Confirm PW</label>
-            <input type="text" name="confirmPw">
+            <input type="password" name="confirmPw">
 
             <input type="submit" value="Register">
         </form>
+
         <h1>Login</h1>
-        <form action="" method="POST">
+        <form action="/login" method="POST">
             {% csrf_token %}
             <label for="email">Email</label>
-            <input type="text" name="email">
+            <input type="email" name="email">
 
             <label for="password">Password</label>
-            <input type="text" name="password">
+            <input type="password" name="password">
 
             <input type="submit" value="Login">
         </form>

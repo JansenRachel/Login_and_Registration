@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <h1>Success! Welcome, ...</h1>
-    <a href="/">Log Out</a>
+    <h1>Success! Welcome {{ request.session.firstname }}</h1>
+    <a href="/logout">Log Out</a>
 </body>
 </html>
